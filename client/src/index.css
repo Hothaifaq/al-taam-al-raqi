@@ -1,0 +1,260 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Luxury Orientalism Color Palette */
+  --primary: #8B2E2E; /* Deep Red */
+  --primary-foreground: #F9F7F4; /* Cream White */
+  --accent: #D4A574; /* Gold/Warm Orange */
+  --accent-foreground: #2C2C2C; /* Dark Charcoal */
+  --sidebar-primary: #8B2E2E;
+  --sidebar-primary-foreground: #F9F7F4;
+  --chart-1: #D4A574;
+  --chart-2: #8B2E2E;
+  --chart-3: #C9956A;
+  --chart-4: #A0522D;
+  --chart-5: #6B1F1F;
+  --radius: 0.65rem;
+  --background: #F9F7F4; /* Cream White */
+  --foreground: #2C2C2C; /* Dark Charcoal */
+  --card: #FFFFFF; /* Pure White */
+  --card-foreground: #2C2C2C;
+  --popover: #FFFFFF;
+  --popover-foreground: #2C2C2C;
+  --secondary: #F5EBE0; /* Light Cream */
+  --secondary-foreground: #8B2E2E;
+  --muted: #E8DDD3; /* Muted Cream */
+  --muted-foreground: #8B2E2E;
+  --destructive: #DC2626;
+  --destructive-foreground: #F9F7F4;
+  --border: #E8DDD3;
+  --input: #FFFFFF;
+  --ring: #D4A574;
+  --sidebar: #F9F7F4;
+  --sidebar-foreground: #2C2C2C;
+  --sidebar-accent: #D4A574;
+  --sidebar-accent-foreground: #2C2C2C;
+  --sidebar-border: #E8DDD3;
+  --sidebar-ring: #D4A574;
+}
+
+.dark {
+  --primary: #D4A574;
+  --primary-foreground: #2C2C2C;
+  --sidebar-primary: #D4A574;
+  --sidebar-primary-foreground: #2C2C2C;
+  --background: #1A1A1A;
+  --foreground: #F9F7F4;
+  --card: #2C2C2C;
+  --card-foreground: #F9F7F4;
+  --popover: #2C2C2C;
+  --popover-foreground: #F9F7F4;
+  --secondary: #3A3A3A;
+  --secondary-foreground: #D4A574;
+  --muted: #4A4A4A;
+  --muted-foreground: #D4A574;
+  --accent: #D4A574;
+  --accent-foreground: #1A1A1A;
+  --destructive: #EF4444;
+  --destructive-foreground: #1A1A1A;
+  --border: #3A3A3A;
+  --input: #2C2C2C;
+  --ring: #D4A574;
+  --chart-1: #D4A574;
+  --chart-2: #C9956A;
+  --chart-3: #A0522D;
+  --chart-4: #8B2E2E;
+  --chart-5: #6B1F1F;
+  --sidebar: #2C2C2C;
+  --sidebar-foreground: #F9F7F4;
+  --sidebar-accent: #D4A574;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #3A3A3A;
+  --sidebar-ring: #D4A574;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Cairo', serif;
+    font-weight: 700;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   * RTL-aware for Arabic layout.
+   */
+  .container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem; /* 16px - mobile padding */
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-inline: 1.5rem; /* 24px - tablet padding */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-inline: 2rem; /* 32px - desktop padding */
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+
+  /* RTL-specific utilities */
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Luxury design elements */
+  .gold-divider {
+    @apply h-1 bg-gradient-to-l from-accent to-transparent;
+  }
+
+  .luxury-shadow {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .luxury-border {
+    @apply border-b-2 border-accent;
+  }
+
+  /* Smooth transitions for luxury feel */
+  .transition-luxury {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Arabic text utilities */
+  .text-arabic {
+    font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  .heading-arabic {
+    font-family: 'Playfair Display', 'Cairo', serif;
+    font-weight: 700;
+  }
+}
+
+/* Animation for entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s linear infinite alternate;
+}
