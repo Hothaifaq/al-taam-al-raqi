@@ -16,6 +16,7 @@ export default function About() {
     'خدمة عملاء ممتازة',
   ];
 
+  
   return (
     <div className="min-h-screen bg-background">
       <Header onCartClick={() => setCartOpen(true)} />
